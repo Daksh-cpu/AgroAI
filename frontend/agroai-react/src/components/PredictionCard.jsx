@@ -1,4 +1,4 @@
-﻿import { translations } from '../data/translations';
+import { translations } from '../data/translations';
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
@@ -189,23 +189,23 @@ const PredictionCard = ({ lang, onPredict, initialSelection }) => {
         className="glass-panel border-white/20 rounded-[2rem] p-8 bg-white/10 backdrop-blur-[40px] shadow-[0_20px_50px_-12px_rgba(132,204,22,0.15)] transition-colors duration-500"
       >
         <motion.div variants={childVariants} className="flex gap-4 mb-8">
-          <div className="relative flex-1 bg-white/[0.08] hover:bg-white/[0.15] hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all border border-white/10 rounded-xl p-3 flex justify-between items-center text-sm text-white backdrop-blur-sm cursor-pointer group">
+          <div className="relative flex-1 min-w-0 bg-white/[0.08] hover:bg-white/[0.15] hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all border border-white/10 rounded-xl p-3 flex justify-between items-center text-base text-white backdrop-blur-sm cursor-pointer group">
             <select value={crop} onChange={handleCropChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer appearance-none">
               <option value="wheat" className="bg-[#051207] text-white py-2">{t.wheat}</option>
               <option value="rice" className="bg-[#051207] text-white py-2">{t.rice}</option>
             </select>
-            <span className="font-medium capitalize">{crop === "wheat" ? t.wheat : t.rice}</span>
-            <i className="ph-bold ph-caret-down text-white/50 group-hover:text-white transition-colors"></i>
+            <span className="font-semibold capitalize truncate pr-2">{crop === "wheat" ? t.wheat : t.rice}</span>
+            <i className="ph-bold ph-caret-down text-white/50 group-hover:text-white transition-colors shrink-0"></i>
           </div>
           
-          <div className="relative flex-1 bg-white/[0.08] hover:bg-white/[0.15] hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all border border-white/10 rounded-xl p-3 flex justify-between items-center text-sm text-white backdrop-blur-sm cursor-pointer group">
+          <div className="relative flex-1 min-w-0 bg-white/[0.08] hover:bg-white/[0.15] hover:shadow-[0_0_15px_rgba(255,255,255,0.1)] transition-all border border-white/10 rounded-xl p-3 flex justify-between items-center text-base text-white backdrop-blur-sm cursor-pointer group">
             <select value={stateName} onChange={handleStateChange} className="absolute inset-0 w-full h-full opacity-0 cursor-pointer appearance-none">
               {Object.keys(cropData[crop]).map(s => (
                 <option key={s} value={s} className="bg-[#051207] text-white py-2">{t[s] || s.toUpperCase()}</option>
               ))}
             </select>
-            <span className="font-medium capitalize">{t[stateName] || stateName}</span>
-            <i className="ph-bold ph-caret-down text-white/50 group-hover:text-white transition-colors"></i>
+            <span className="font-semibold capitalize truncate pr-2">{t[stateName] || stateName}</span>
+            <i className="ph-bold ph-caret-down text-white/50 group-hover:text-white transition-colors shrink-0"></i>
           </div>
         </motion.div>
 
