@@ -16,4 +16,6 @@ AgroAIdemo/data/*.csv
 
 # Environment variables
 .env
-.env.local
+.env.local 
+AgroAIdemo/agmarknet-india-commodity-prices-2024-2025/*.csv
+!AgroAIdemo/agmarknet-india-commodity-prices-2024-2025/*.csv.gz

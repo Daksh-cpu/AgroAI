@@ -25,7 +25,10 @@ BRAND = "#84CC16"
 BRAND_LIGHT = "#BEF264"
 WARN = "#F59E0B"
 DANGER = "#EF4444"
-REACT_APP_URL = os.getenv("REACT_APP_URL", "http://localhost:5173")
+try:
+    REACT_APP_URL = st.secrets.get("REACT_APP_URL", os.getenv("REACT_APP_URL", "http://localhost:5173"))
+except Exception:
+    REACT_APP_URL = os.getenv("REACT_APP_URL", "http://localhost:5173")
 BASE_DIR = Path(__file__).resolve().parent
 MODELS_DIR = BASE_DIR / "models"
 

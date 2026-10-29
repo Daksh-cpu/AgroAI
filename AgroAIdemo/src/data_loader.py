@@ -1,5 +1,6 @@
 import pandas as pd
 import csv
+import gzip
 
 def load_crop_state_subset(path, crop, state):
     """
@@ -11,8 +12,10 @@ def load_crop_state_subset(path, crop, state):
     # Strip target values for robust matching
     target_crop = str(crop).strip()
     target_state = str(state).strip()
+
+    open_func = (lambda p, **kw: gzip.open(p, mode="rt", **kw)) if str(path).endswith(".gz") else (lambda p, **kw: open(p, mode="r", **kw))
     
-    with open(path, mode='r', encoding='utf-8') as f:
+    with open_func(path, encoding="utf-8") as f:
         reader = csv.DictReader(f)
         for row in reader:
             c = row.get("Commodity")
